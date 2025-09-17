@@ -1,5 +1,5 @@
 
-
+from pathlib import Path 
 from grades import Grades
 from grade_weights import GradeWeights
 from grade_calculator import GradeCalculator
@@ -7,11 +7,9 @@ from grade_calculator import GradeCalculator
 # This runs the grade calculation.
 
 # Instatiate Grade and Weights objects
-my_grades = Grades()
+grades_file = Path(__file__).with_name("grades.json")
+my_grades = Grades.from_json_file(grades_file)
 weights = GradeWeights()
-
-# Set grades achieved so far
-my_grades.quiz_1 = 0.90 # Received 78% in the first quiz
 
 # Print out the grades to console
 print(my_grades)

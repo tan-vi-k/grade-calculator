@@ -1,4 +1,4 @@
-
+import json
 
 class Grades:
     """
@@ -30,7 +30,23 @@ class Grades:
         self.midterm = midterm
         self.project = project
         self.final = final
-        
+    
+    @classmethod
+    def from_json_file(cls, path: str) -> "Grades":
+  
+    # Open the JSON file
+        with open(path, "r") as f:
+            data = json.load(f)
+
+    # Read each grade from the JSON file and returning it.
+        return cls (
+            quiz_1 = data.get("quiz_1"),
+            quiz_2 = data.get("quiz_2"),
+            midterm = data.get("midterm"),
+            project = data.get("project"),
+            final = data.get("final")
+        )
+    
     def __str__(self) -> str:
         """
         This method gets called whenever this object is
